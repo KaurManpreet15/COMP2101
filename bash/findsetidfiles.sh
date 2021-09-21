@@ -20,9 +20,8 @@ echo "============="
 find / -type f -executable -perm -4000 -ls 2>/dev/null | sort -k 5| awk '{print $3,$5,$NF;}'
 echo "12 Largest Regular File:"
 echo "============="
-# first it finds the list of files from root directory
-#Using pipeline we list it into human readable form and sort them to select top 12 results then display the required info using awk
-find / -type f -printf "%s\t%p\n"  2>/dev/null|ls -slh| sort -n | tail -12| awk '{print $1,$4,$NF;}'
+
+find / -type f -exec ls -lh {} + 2>/dev/null | sort -hr -k5 | head -n 12|awk -F" +|/" '{print $5,$3,$NF;}'
 
 # for the task, add
 # commands to display a title
