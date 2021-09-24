@@ -24,5 +24,12 @@ die2=$(( RANDOM % range + bias))
 # display the results
 echo "Rolled $die1, $die2"
 sum=$((die1+die2))
-echo "Sum of dice: $((sum))"
-echo "Avg. of dice: $((sum/2))"
+avg=$(($sum/2))
+favg=$(awk "BEGIN{printf \"%.2f\", $sum/2}")
+
+cat <<EOF
+Sum of dice: $sum
+Avg of dice: $avg
+  - More precisely, it is $favg
+EOF
+
