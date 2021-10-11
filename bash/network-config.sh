@@ -87,8 +87,8 @@
 #Solution
 
 
-router_address=$(ip route show | awk '/default/ {print $3}')
-sudo sed -i "2 a $router_address	router" /etc/hosts
+router_address=$(ip route show | awk '/default/ {print $3}');
+sudo sed -i "2 a $router_address		router" /etc/hosts
 
 router_name=$(cat /etc/hosts | grep $router_address | awk '{print $2}')
 
